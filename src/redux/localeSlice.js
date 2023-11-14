@@ -12,7 +12,7 @@ const localeSlice = createSlice({
   },
 });
 
-export const localeReduser = localeSlice.reduser;
+export const localeReduser = localeSlice.reducer;
 
 export const { changeLang } = localeSlice.actions;
 

@@ -8,12 +8,26 @@ const accountSlice = createSlice({
     balance: 500,
     username: 'Jacob',
   },
-  redusers: {
-    deposit(state, action) {},
-    withdraw(state, action) {},
-  }
+  reducers: {
+    deposit: {
+      reducer(state, action) {
+        state.balance += action.payload.value;
+      },
+      prepare(value) {
+        return {
+          payload: {
+            value,
+            id: Date.now(),
+          },
+        };
+      },
+    },
+    withdraw(state, action) {
+      state.balance -= action.payload;
+    },
+  },
 });
-export const accountReduser = accountSlice.reducer
+export const accountReduser = accountSlice.reducer;
 
 export const { deposit, withdraw } = accountSlice.actions;
 
